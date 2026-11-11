@@ -3032,6 +3032,35 @@
         }
       }
     </style>
+  
+    <style id="tasks-plan-style">
+      .tasks-plan { margin: 34px 0 10px; padding-top: 28px; border-top: 1px solid var(--line); }
+      .tp-eyebrow { font-family: CuboDIN, "Arial Narrow", Arial, sans-serif; color: var(--cyan); letter-spacing: .08em; text-transform: uppercase; font-size: 14px; }
+      .tp-eyebrow::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); margin-right: 9px; vertical-align: middle; }
+      .tasks-plan h2 { margin: 8px 0 6px; font-size: clamp(24px, 3vw, 32px); color: var(--text); }
+      .tp-intro { margin: 0 0 16px; color: var(--muted); max-width: 860px; line-height: 1.5; }
+      .tp-summary { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 22px; color: var(--muted); }
+      .tp-summary b { color: var(--text); font-size: 20px; margin-right: 4px; }
+      .tp-week { margin-bottom: 22px; }
+      .tp-date { font-family: CuboDIN, "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: .06em; color: var(--quiet); font-size: 14px; margin-bottom: 10px; }
+      .tp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 14px; }
+      .tp-task { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+      .tp-head { display: flex; gap: 10px; align-items: flex-start; }
+      .tp-head h3 { margin: 0; font-size: 16px; line-height: 1.3; color: var(--text); }
+      .tp-prio { flex: none; font-family: CuboDIN, Arial, sans-serif; font-size: 12px; letter-spacing: .05em; padding: 3px 9px; border-radius: 999px; border: 1px solid currentColor; }
+      .tp-p0 { color: var(--lime); } .tp-p1 { color: var(--cyan); } .tp-p2 { color: var(--purple); }
+      .tp-obj { margin: 0; color: var(--text); font-size: 14px; }
+      .tp-why { background: var(--soft); border-radius: 12px; padding: 10px 12px; }
+      .tp-why b { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--quiet); margin-bottom: 4px; }
+      .tp-why p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; }
+      .tp-steps summary { cursor: pointer; color: var(--lime); font-size: 14px; font-weight: 600; }
+      .tp-steps ol { margin: 10px 0 0; padding-left: 20px; color: var(--text); font-size: 13px; line-height: 1.55; }
+      .tp-steps li { margin-bottom: 5px; overflow-wrap: anywhere; }
+      .tp-foot { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; border-top: 1px solid var(--line); }
+      .tp-foot small { color: var(--quiet); font-size: 12px; overflow-wrap: anywhere; flex: 1 1 200px; }
+      .tp-link { color: var(--cyan); font-size: 13px; text-decoration: none; white-space: nowrap; }
+      .tp-link:hover { text-decoration: underline; }
+    </style>
   </head>
   <body>
     <a class="skip" href="#workspace">Ir al calendario</a>
@@ -3419,6 +3448,62 @@
           <div class="calendar" id="calendar"></div>
         </div>
         <div class="list-view" id="list-view" hidden></div>
+
+        <section class="tasks-plan" id="tareas-tecnicas" aria-labelledby="tp-title">
+          <div class="tp-eyebrow">Fuera del calendario de contenido</div>
+          <h2 id="tp-title">Tareas SEO y técnicas del mes</h2>
+          <p class="tp-intro">PROPUESTA: no son publicaciones. Se ejecutan en paralelo a las curaciones y posts para subir clics, impresiones y tráfico orgánico. Ninguna está hecha hasta registrarla en el log con evidencia.</p>
+          <div class="tp-summary"><span><b>8</b> tareas</span><span class="tp-prio tp-p0">P0 · 1</span><span class="tp-prio tp-p1">P1 · 6</span><span class="tp-prio tp-p2">P2 · 1</span></div>
+          <div class="tp-week"><div class="tp-date">Miércoles 4 de noviembre</div><div class="tp-grid"><article class="tp-task" id="tarea-01">
+  <div class="tp-head"><span class="tp-prio tp-p0">P0</span><h3>Medición: una acción = un evento (F26)</h3></div>
+  <p class="tp-obj">Poder saber qué curación genera contactos sin contar dos veces.</p>
+  <div class="tp-why"><b>Por qué (datos)</b><p>RESULTADO 01–10/11: solo aparecen eventos nuevos (whatsapp_click, phone_click) y generate_lead; no aparecen clic_whatsapp, clic_telefono ni envio_formulario. HIPÓTESIS: las etiquetas antiguas dejaron de disparar. Orgánico: 1 whatsapp_click y 1 generate_lead (eventos, no prospectos).</p></div>
+  <details class="tp-steps"><summary>Qué hacer · 6 pasos</summary><ol><li>Confirmar en DebugView que cada clic en WhatsApp, teléfono y correo genera un solo evento.</li><li>Confirmar si las etiquetas antiguas se retiraron y desde qué fecha (anotarlo para no comparar meses mal).</li><li>Definir qué es generate_lead y si duplica a form_submit_success.</li><li>Probar un envío de formulario de punta a punta (redirección a /gracias/ y correo recibido).</li><li>Corregir el mapeo de service en /polilla/ y /captura-y-reubicacion-fauna/.</li><li>Pedir acceso a GTM-TM88GCQP y GTM-5RFMZHJJ si sigue faltando.</li></ol></details>
+  <div class="tp-foot"><small>Fuente: GA4 531225400 (Windsor), eventos 01–10/11/2026; Auditoría IA F26 (En proceso).</small></div>
+</article><article class="tp-task" id="tarea-02">
+  <div class="tp-head"><span class="tp-prio tp-p1">P1</span><h3>Portada y URL con UTM de la ficha</h3></div>
+  <p class="tp-obj">Entender la caída de la portada antes de tocarla.</p>
+  <div class="tp-why"><b>Por qué (datos)</b><p>RESULTADO 12/10–09/11: la URL con UTM de GBP suma 869 impresiones y posición 2,4 (rankea 1–3 en «fumigaciones», «control de plagas», «fumigaciones puebla»). La portada limpia suma 525 impresiones en posición 34,5 y aparece en pos. 40–60 para «empresa control de plagas» (39 impr.) o «servicio de control de plagas» (26). HIPÓTESIS: la fila con UTM refleja el bloque de mapas; la portada orgánica rankea débil para genéricas.</p></div>
+  <details class="tp-steps"><summary>Qué hacer · 5 pasos</summary><ol><li>Revisar que /?utm_source=google&amp;utm_medium=organic&amp;utm_campaign=gbp tenga canonical hacia la portada limpia.</li><li>No quitar el UTM de la ficha (afecta la medición; requiere aprobación).</li><li>En reportes, leer la fila con UTM como visibilidad local, no como pérdida de la portada.</li><li>Inspeccionar la portada en Search Console (indexada, canonical elegido por Google).</li><li>Documentar el diagnóstico antes de la tarea de portada del 18/11.</li></ol></details>
+  <div class="tp-foot"><small>Fuente: Search Console (Windsor), propiedad https://detectaplagas.com.mx/, ventana 12/10–09/11/2026, consultado 11/11/2026</small><a class="tp-link" href="https://detectaplagas.com.mx/" target="_blank" rel="noopener noreferrer">Abrir URL ↗</a></div>
+</article></div></div><div class="tp-week"><div class="tp-date">Miércoles 11 de noviembre</div><div class="tp-grid"><article class="tp-task" id="tarea-03">
+  <div class="tp-head"><span class="tp-prio tp-p1">P1</span><h3>Ficha GBP: retirar afirmaciones sin respaldo y completar datos (F23/F25)</h3></div>
+  <p class="tp-obj">Que la ficha no prometa lo que no está documentado y muestre servicios reales.</p>
+  <div class="tp-why"><b>Por qué (datos)</b><p>RESULTADO (Windsor, 11/11): la descripción dice «entregamos certificado de fumigación, servicios garantizados» y menciona estadios, cines y autobuses; el post del 08/10 publicó «más de 15 años, 500 espacios y 300 clientes»; la lista de servicios incluye avispas (no confirmado); categorías adicionales vacías. Reseñas: 38, promedio 4,9.</p></div>
+  <details class="tp-steps"><summary>Qué hacer · 6 pasos</summary><ol><li>Enviar a Omar la lista de afirmaciones para validar o retirar: certificado, garantía, sectores, cifras de experiencia.</li><li>Validar servicios: avispas, mosquitos, fumigación vehicular; quitar los no ofrecidos.</li><li>Proponer categorías adicionales solo si el negocio las confirma.</li><li>Corregir productos duplicados (899/999 MXN) tras validación.</li><li>Responder las reseñas nuevas.</li><li>No modificar nombre, servicios ni cobertura sin aprobación.</li></ol></details>
+  <div class="tp-foot"><small>Fuente: GBP locations/11630930406737776484 (Windsor), datos de la ficha y posts, 11/11/2026; Auditoría IA F23 y F25.</small><a class="tp-link" href="https://www.google.com/maps?cid=1695565837928400766" target="_blank" rel="noopener noreferrer">Abrir URL ↗</a></div>
+</article><article class="tp-task" id="tarea-04">
+  <div class="tp-head"><span class="tp-prio tp-p1">P1</span><h3>Enlazado interno hacia landings de servicio</h3></div>
+  <p class="tp-obj">Pasar autoridad de los artículos que ya rankean a las landings que venden.</p>
+  <div class="tp-why"><b>Por qué (datos)</b><p>RESULTADO 12/10–09/11: /cucarachas/ pos. 42,6 (37 impr.), /aranas/ pos. 22,4, /control-plagas-empresas-puebla/ pos. 41,5, mientras artículos del mismo tema rankean 6–17. Para «control de plagas puebla», /cucarachas/ aparece en pos. 70.</p></div>
+  <details class="tp-steps"><summary>Qué hacer · 4 pasos</summary><ol><li>En cada una de las 8 curaciones del mes, añadir 1 enlace contextual a su landing con texto descriptivo («fumigación de cucarachas en Puebla»).</li><li>En /cucarachas/, /chinches/, /termitas/ y /roedores/: comprobar el bloque de 3 guías relacionadas (F16).</li><li>Desde artículos de cocina/moscas, enlazar /fumigacion-restaurantes-puebla/.</li><li>Evitar el mismo texto ancla repetido en todo el sitio.</li></ol></details>
+  <div class="tp-foot"><small>Fuente: Search Console (Windsor), propiedad https://detectaplagas.com.mx/, ventana 12/10–09/11/2026, consultado 11/11/2026</small></div>
+</article></div></div><div class="tp-week"><div class="tp-date">Miércoles 18 de noviembre</div><div class="tp-grid"><article class="tp-task" id="tarea-05">
+  <div class="tp-head"><span class="tp-prio tp-p1">P1</span><h3>Landings B2B: confirmar indexación y darles enlaces</h3></div>
+  <p class="tp-obj">Que restaurantes y empresas empiecen a recibir clics.</p>
+  <div class="tp-why"><b>Por qué (datos)</b><p>RESULTADO 12/10–09/11: empresas 17 impr. (pos. 41,5); restaurantes 4 impr. (pos. 41,5); restaurantes recibió 2 sesiones desde asistentes de IA. Que Google las muestre sugiere que están indexadas (NO CONFIRMADO con inspección).</p></div>
+  <details class="tp-steps"><summary>Qué hacer · 4 pasos</summary><ol><li>Inspeccionar ambas URLs en Search Console y pedir indexación si hace falta.</li><li>Añadir enlaces desde artículos de cocinas, moscas, cucarachas y roedores.</li><li>Revisar que el título use «Puebla» y la intención («fumigación para restaurantes en Puebla», «control de plagas para empresas en Puebla»).</li><li>Evaluar a 28 días; no calificarlas antes.</li></ol></details>
+  <div class="tp-foot"><small>Fuente: Search Console (Windsor), propiedad https://detectaplagas.com.mx/, ventana 12/10–09/11/2026, consultado 11/11/2026; GA4 AI Assistant.</small><a class="tp-link" href="https://detectaplagas.com.mx/control-plagas-empresas-puebla/" target="_blank" rel="noopener noreferrer">Abrir URL ↗</a></div>
+</article><article class="tp-task" id="tarea-06">
+  <div class="tp-head"><span class="tp-prio tp-p1">P1</span><h3>Portada: reforzar «control de plagas en Puebla»</h3></div>
+  <p class="tp-obj">Que la portada limpia suba de la posición 30–60 en consultas genéricas.</p>
+  <div class="tp-why"><b>Por qué (datos)</b><p>RESULTADO 12/10–09/11 (portada limpia): «empresa control de plagas» 39 impr. pos. 53; «empresas control de plagas» 38, pos. 53; «servicio de control de plagas» 26, pos. 37; «fumigaciones puebla» 17, pos. 20; «control de plagas puebla» 9, pos. 15. Hacer solo tras el diagnóstico del 04/11.</p></div>
+  <details class="tp-steps"><summary>Qué hacer · 5 pasos</summary><ol><li>Título y H1 con «Control de plagas y fumigaciones en Puebla».</li><li>Párrafo inicial: qué hace Detecta Plagas, para quién (hogares, restaurantes, empresas) y dónde.</li><li>Bloque de servicios con enlaces a las 8 landings y a Negocios.</li><li>FAQ local breve y reseñas con su fuente (sin cifras no documentadas).</li><li>Proponer los cambios a Emmanuel/Omar antes de publicar; anotar la fecha.</li></ol></details>
+  <div class="tp-foot"><small>Fuente: Search Console (Windsor), propiedad https://detectaplagas.com.mx/, ventana 12/10–09/11/2026, consultado 11/11/2026</small><a class="tp-link" href="https://detectaplagas.com.mx/" target="_blank" rel="noopener noreferrer">Abrir URL ↗</a></div>
+</article></div></div><div class="tp-week"><div class="tp-date">Miércoles 25 de noviembre</div><div class="tp-grid"><article class="tp-task" id="tarea-07">
+  <div class="tp-head"><span class="tp-prio tp-p2">P2</span><h3>Pendientes con aprobación: Hormigas, Pulgas y aviso de privacidad</h3></div>
+  <p class="tp-obj">Publicar lo que ya está hecho en cuanto el cliente lo apruebe.</p>
+  <div class="tp-why"><b>Por qué (datos)</b><p>Hormigas (701) y Pulgas (706) siguen en borrador (F13); aviso de privacidad sin publicar (F27). La ficha GBP ya lista hormigas y pulgas como servicios.</p></div>
+  <details class="tp-steps"><summary>Qué hacer · 3 pasos</summary><ol><li>Pedir a Omar aprobación de Hormigas y Pulgas; QA público, enlaces desde menú y artículos.</li><li>Pedir nombre legal, RFC, domicilio y finalidades para el aviso; publicarlo y enlazarlo en footer y formulario.</li><li>No publicar sin aprobación.</li></ol></details>
+  <div class="tp-foot"><small>Fuente: Ficha del proyecto (pendientes F13 y F27); GBP service items (Windsor).</small></div>
+</article><article class="tp-task" id="tarea-08">
+  <div class="tp-head"><span class="tp-prio tp-p1">P1</span><h3>Registrar curaciones y preparar la medición de diciembre</h3></div>
+  <p class="tp-obj">Poder demostrar en el reporte qué cambio movió clics e impresiones.</p>
+  <div class="tp-why"><b>Por qué (datos)</b><p>La pestaña Log no tiene filas de noviembre al 11/11. El control F28 corre el 1/12 a las 06:17 UTC.</p></div>
+  <details class="tp-steps"><summary>Qué hacer · 5 pasos</summary><ol><li>Registrar en el log cada curación y post con fecha real de publicación (una fila por entregable).</li><li>Guardar los títulos/metas anteriores para comparar.</li><li>Comparar 28 días antes vs. 28 días después por URL y consulta (no mes parcial).</li><li>Revisar el resultado de F28 del 1/12 y el rendimiento F17.</li><li>PROPUESTA para diciembre: evaluar una página general de precios de fumigación en Puebla solo si el negocio aprueba precios o criterios.</li></ol></details>
+  <div class="tp-foot"><small>Fuente: Google Sheet «SEO», pestaña Log (11/11/2026); ficha F28.</small><a class="tp-link" href="https://docs.google.com/spreadsheets/d/1hh9YH4WGATbF1qNl7-iW3mrQl9KHxTVKgPu80fI0aSk/edit" target="_blank" rel="noopener noreferrer">Abrir URL ↗</a></div>
+</article></div></div>
+        </section>
         <footer class="workspace-footer">
           <span><i data-icon="check"></i><span id="footer-context"></span></span
           ><span
@@ -3821,7 +3906,7 @@
     <script type="application/json" id="dashboard-data">
 {
   "schemaVersion": 1,
-  "planId": "detecta-plagas-2026-11-v1",
+  "planId": "detecta-plagas-2026-11-v2",
   "demo": false,
   "client": {
     "id": "detecta-plagas",
@@ -3834,7 +3919,7 @@
   },
   "year": 2026,
   "month": 11,
-  "objective": "Subir clics e impresiones orgánicas: curar 8 URLs con impresiones cerca de página 1, 4 posts GBP hacia landings y 8 tareas que destraban portada, enlazado y medición.",
+  "objective": "Subir clics e impresiones orgánicas: curar 8 URLs con impresiones cerca de página 1 y 4 posts GBP hacia landings. Las tareas técnicas del mes están en el listado al final.",
   "publications": [
     {
       "localIntent": "Puebla, Pue.",
@@ -3931,58 +4016,6 @@
     {
       "localIntent": "Puebla, Pue.",
       "hashtags": "",
-      "imageText": "",
-      "notes": "",
-      "status": "Planeado",
-      "secondaryKeywords": [],
-      "url": "",
-      "id": "dp-2026-11-04-t1",
-      "date": "2026-11-04",
-      "theme": "Medición: una acción = un evento (F26)",
-      "category": "Tarea técnica",
-      "service": "SEO técnico / web · P0",
-      "targetAudience": "Equipo Cubo SEO (interno)",
-      "customerJourney": "Interno",
-      "objective": "Poder saber qué curación genera contactos sin contar dos veces.",
-      "strategicRationale": "RESULTADO 01–10/11: solo aparecen eventos nuevos (whatsapp_click, phone_click) y generate_lead; no aparecen clic_whatsapp, clic_telefono ni envio_formulario. HIPÓTESIS: las etiquetas antiguas dejaron de disparar. Orgánico: 1 whatsapp_click y 1 generate_lead (eventos, no prospectos).",
-      "primaryKeyword": "",
-      "hook": "P0 · Medición: una acción = un evento (F26)",
-      "caption": "1. Confirmar en DebugView que cada clic en WhatsApp, teléfono y correo genera un solo evento.\n2. Confirmar si las etiquetas antiguas se retiraron y desde qué fecha (anotarlo para no comparar meses mal).\n3. Definir qué es generate_lead y si duplica a form_submit_success.\n4. Probar un envío de formulario de punta a punta (redirección a /gracias/ y correo recibido).\n5. Corregir el mapeo de service en /polilla/ y /captura-y-reubicacion-fauna/.\n6. Pedir acceso a GTM-TM88GCQP y GTM-5RFMZHJJ si sigue faltando.",
-      "cta": "Marcar como hecha en el log solo con evidencia de cierre",
-      "imageDirection": "No aplica: tarea interna sin pieza gráfica.",
-      "imagePrompt": "No aplica: tarea interna sin pieza gráfica.",
-      "altText": "No aplica.",
-      "evidence": "GA4 531225400 (Windsor), eventos 01–10/11/2026; Auditoría IA F26 (En proceso)."
-    },
-    {
-      "localIntent": "Puebla, Pue.",
-      "hashtags": "",
-      "imageText": "",
-      "notes": "",
-      "status": "Planeado",
-      "secondaryKeywords": [],
-      "url": "https://detectaplagas.com.mx/",
-      "id": "dp-2026-11-04-t2",
-      "date": "2026-11-04",
-      "theme": "Portada y URL con UTM de la ficha",
-      "category": "Tarea técnica",
-      "service": "SEO técnico / web · P1",
-      "targetAudience": "Equipo Cubo SEO (interno)",
-      "customerJourney": "Interno",
-      "objective": "Entender la caída de la portada antes de tocarla.",
-      "strategicRationale": "RESULTADO 12/10–09/11: la URL con UTM de GBP suma 869 impresiones y posición 2,4 (rankea 1–3 en «fumigaciones», «control de plagas», «fumigaciones puebla»). La portada limpia suma 525 impresiones en posición 34,5 y aparece en pos. 40–60 para «empresa control de plagas» (39 impr.) o «servicio de control de plagas» (26). HIPÓTESIS: la fila con UTM refleja el bloque de mapas; la portada orgánica rankea débil para genéricas.",
-      "primaryKeyword": "control de plagas Puebla",
-      "hook": "P1 · Portada y URL con UTM de la ficha",
-      "caption": "1. Revisar que /?utm_source=google\u0026utm_medium=organic\u0026utm_campaign=gbp tenga canonical hacia la portada limpia.\n2. No quitar el UTM de la ficha (afecta la medición; requiere aprobación).\n3. En reportes, leer la fila con UTM como visibilidad local, no como pérdida de la portada.\n4. Inspeccionar la portada en Search Console (indexada, canonical elegido por Google).\n5. Documentar el diagnóstico antes de la tarea de portada del 18/11.",
-      "cta": "Marcar como hecha en el log solo con evidencia de cierre",
-      "imageDirection": "No aplica: tarea interna sin pieza gráfica.",
-      "imagePrompt": "No aplica: tarea interna sin pieza gráfica.",
-      "altText": "No aplica.",
-      "evidence": "Search Console (Windsor), propiedad https://detectaplagas.com.mx/, ventana 12/10–09/11/2026, consultado 11/11/2026"
-    },
-    {
-      "localIntent": "Puebla, Pue.",
-      "hashtags": "",
       "imageText": "Costo de fumigar termitas en Puebla",
       "notes": "",
       "status": "Planeado",
@@ -4067,58 +4100,6 @@
       "imagePrompt": "Pieza para Google Business Profile de Detecta Plagas. Formato cuadrado 1200 × 1200 px (decisión editorial). Escena: Mano sosteniendo un teléfono con un chat de mensajería genérico (sin marca ni datos personales) en una cocina limpia; burbuja con lista de casillas. Composición: sujeto principal en el tercio central, fondo despejado, iluminación natural suave, jerarquía clara entre escena, texto y logo. Texto exacto en la imagen: «Cotiza en 3 datos» en una sola línea o dos, tipografía sans serif gruesa, alto contraste, máximo 8 palabras. Identidad del cliente: Detecta Plagas (Puebla, México). Integrar el logo ORIGINAL de Detecta Plagas tomado de la carpeta de Drive «Detecta Plagas» o del sitio; no recrearlo, redibujarlo ni inventarlo. Si el archivo no está disponible, dejar libre un área de 220 × 90 px en la esquina superior izquierda para colocarlo después. Paleta y tipografía oficiales: NO CONFIRMADAS; tomarlas de los archivos de marca. Si no se confirman, usar fondo claro, texto gris carbón y un solo color de acento tomado del logo. Sin paleta Cubo SEO. Restricciones: estilo ilustración/foto de estudio limpia y claramente genérica; NO presentarla como fotografía de un trabajo real de Detecta Plagas ni añadir pies de foto. Sin personas reconocibles, sin plagas en primer plano grotesco, sin químicos rociándose sobre alimentos, sin precios, sellos, certificados ni garantías. Márgenes seguros de 80 px. Revisar ortografía y legibilidad en móvil antes de publicar.",
       "altText": "Teléfono con un chat genérico y una lista de casillas en una cocina limpia.",
       "evidence": "Servicio confirmado en la ficha (landing /cucarachas/). GSC 12/10–09/11/2026 para /cucarachas/."
-    },
-    {
-      "localIntent": "Puebla, Pue.",
-      "hashtags": "",
-      "imageText": "",
-      "notes": "",
-      "status": "Planeado",
-      "secondaryKeywords": [],
-      "url": "https://www.google.com/maps?cid=1695565837928400766",
-      "id": "dp-2026-11-11-t3",
-      "date": "2026-11-11",
-      "theme": "Ficha GBP: retirar afirmaciones sin respaldo y completar datos (F23/F25)",
-      "category": "Tarea técnica",
-      "service": "SEO técnico / web · P1",
-      "targetAudience": "Equipo Cubo SEO (interno)",
-      "customerJourney": "Interno",
-      "objective": "Que la ficha no prometa lo que no está documentado y muestre servicios reales.",
-      "strategicRationale": "RESULTADO (Windsor, 11/11): la descripción dice «entregamos certificado de fumigación, servicios garantizados» y menciona estadios, cines y autobuses; el post del 08/10 publicó «más de 15 años, 500 espacios y 300 clientes»; la lista de servicios incluye avispas (no confirmado); categorías adicionales vacías. Reseñas: 38, promedio 4,9.",
-      "primaryKeyword": "",
-      "hook": "P1 · Ficha GBP: retirar afirmaciones sin respaldo y completar datos (F23/F25)",
-      "caption": "1. Enviar a Omar la lista de afirmaciones para validar o retirar: certificado, garantía, sectores, cifras de experiencia.\n2. Validar servicios: avispas, mosquitos, fumigación vehicular; quitar los no ofrecidos.\n3. Proponer categorías adicionales solo si el negocio las confirma.\n4. Corregir productos duplicados (899/999 MXN) tras validación.\n5. Responder las reseñas nuevas.\nNo modificar nombre, servicios ni cobertura sin aprobación.",
-      "cta": "Marcar como hecha en el log solo con evidencia de cierre",
-      "imageDirection": "No aplica: tarea interna sin pieza gráfica.",
-      "imagePrompt": "No aplica: tarea interna sin pieza gráfica.",
-      "altText": "No aplica.",
-      "evidence": "GBP locations/11630930406737776484 (Windsor), datos de la ficha y posts, 11/11/2026; Auditoría IA F23 y F25."
-    },
-    {
-      "localIntent": "Puebla, Pue.",
-      "hashtags": "",
-      "imageText": "",
-      "notes": "",
-      "status": "Planeado",
-      "secondaryKeywords": [],
-      "url": "",
-      "id": "dp-2026-11-11-t4",
-      "date": "2026-11-11",
-      "theme": "Enlazado interno hacia landings de servicio",
-      "category": "Tarea técnica",
-      "service": "SEO técnico / web · P1",
-      "targetAudience": "Equipo Cubo SEO (interno)",
-      "customerJourney": "Interno",
-      "objective": "Pasar autoridad de los artículos que ya rankean a las landings que venden.",
-      "strategicRationale": "RESULTADO 12/10–09/11: /cucarachas/ pos. 42,6 (37 impr.), /aranas/ pos. 22,4, /control-plagas-empresas-puebla/ pos. 41,5, mientras artículos del mismo tema rankean 6–17. Para «control de plagas puebla», /cucarachas/ aparece en pos. 70.",
-      "primaryKeyword": "",
-      "hook": "P1 · Enlazado interno hacia landings de servicio",
-      "caption": "1. En cada una de las 8 curaciones del mes, añadir 1 enlace contextual a su landing con texto descriptivo («fumigación de cucarachas en Puebla»).\n2. En /cucarachas/, /chinches/, /termitas/ y /roedores/: comprobar el bloque de 3 guías relacionadas (F16).\n3. Desde artículos de cocina/moscas, enlazar /fumigacion-restaurantes-puebla/.\n4. Evitar el mismo texto ancla repetido en todo el sitio.",
-      "cta": "Marcar como hecha en el log solo con evidencia de cierre",
-      "imageDirection": "No aplica: tarea interna sin pieza gráfica.",
-      "imagePrompt": "No aplica: tarea interna sin pieza gráfica.",
-      "altText": "No aplica.",
-      "evidence": "Search Console (Windsor), propiedad https://detectaplagas.com.mx/, ventana 12/10–09/11/2026, consultado 11/11/2026"
     },
     {
       "localIntent": "Puebla, Pue.",
@@ -4211,58 +4192,6 @@
     {
       "localIntent": "Puebla, Pue.",
       "hashtags": "",
-      "imageText": "",
-      "notes": "",
-      "status": "Planeado",
-      "secondaryKeywords": [],
-      "url": "https://detectaplagas.com.mx/control-plagas-empresas-puebla/",
-      "id": "dp-2026-11-18-t5",
-      "date": "2026-11-18",
-      "theme": "Landings B2B: confirmar indexación y darles enlaces",
-      "category": "Tarea técnica",
-      "service": "SEO técnico / web · P1",
-      "targetAudience": "Equipo Cubo SEO (interno)",
-      "customerJourney": "Interno",
-      "objective": "Que restaurantes y empresas empiecen a recibir clics.",
-      "strategicRationale": "RESULTADO 12/10–09/11: empresas 17 impr. (pos. 41,5); restaurantes 4 impr. (pos. 41,5); restaurantes recibió 2 sesiones desde asistentes de IA. Que Google las muestre sugiere que están indexadas (NO CONFIRMADO con inspección).",
-      "primaryKeyword": "",
-      "hook": "P1 · Landings B2B: confirmar indexación y darles enlaces",
-      "caption": "1. Inspeccionar ambas URLs en Search Console y pedir indexación si hace falta.\n2. Añadir enlaces desde artículos de cocinas, moscas, cucarachas y roedores.\n3. Revisar que el título use «Puebla» y la intención («fumigación para restaurantes en Puebla», «control de plagas para empresas en Puebla»).\n4. Evaluar a 28 días; no calificarlas antes.",
-      "cta": "Marcar como hecha en el log solo con evidencia de cierre",
-      "imageDirection": "No aplica: tarea interna sin pieza gráfica.",
-      "imagePrompt": "No aplica: tarea interna sin pieza gráfica.",
-      "altText": "No aplica.",
-      "evidence": "Search Console (Windsor), propiedad https://detectaplagas.com.mx/, ventana 12/10–09/11/2026, consultado 11/11/2026; GA4 AI Assistant."
-    },
-    {
-      "localIntent": "Puebla, Pue.",
-      "hashtags": "",
-      "imageText": "",
-      "notes": "",
-      "status": "Planeado",
-      "secondaryKeywords": [],
-      "url": "https://detectaplagas.com.mx/",
-      "id": "dp-2026-11-18-t6",
-      "date": "2026-11-18",
-      "theme": "Portada: reforzar «control de plagas en Puebla»",
-      "category": "Tarea técnica",
-      "service": "SEO técnico / web · P1",
-      "targetAudience": "Equipo Cubo SEO (interno)",
-      "customerJourney": "Interno",
-      "objective": "Que la portada limpia suba de la posición 30–60 en consultas genéricas.",
-      "strategicRationale": "RESULTADO 12/10–09/11 (portada limpia): «empresa control de plagas» 39 impr. pos. 53; «empresas control de plagas» 38, pos. 53; «servicio de control de plagas» 26, pos. 37; «fumigaciones puebla» 17, pos. 20; «control de plagas puebla» 9, pos. 15. Hacer solo tras el diagnóstico del 04/11.",
-      "primaryKeyword": "control de plagas en Puebla",
-      "hook": "P1 · Portada: reforzar «control de plagas en Puebla»",
-      "caption": "1. Título y H1 con «Control de plagas y fumigaciones en Puebla».\n2. Párrafo inicial: qué hace Detecta Plagas, para quién (hogares, restaurantes, empresas) y dónde.\n3. Bloque de servicios con enlaces a las 8 landings y a Negocios.\n4. FAQ local breve y reseñas con su fuente (sin cifras no documentadas).\n5. Proponer los cambios a Emmanuel/Omar antes de publicar; anotar la fecha.",
-      "cta": "Marcar como hecha en el log solo con evidencia de cierre",
-      "imageDirection": "No aplica: tarea interna sin pieza gráfica.",
-      "imagePrompt": "No aplica: tarea interna sin pieza gráfica.",
-      "altText": "No aplica.",
-      "evidence": "Search Console (Windsor), propiedad https://detectaplagas.com.mx/, ventana 12/10–09/11/2026, consultado 11/11/2026"
-    },
-    {
-      "localIntent": "Puebla, Pue.",
-      "hashtags": "",
       "imageText": "Polillas en tu clóset",
       "notes": "",
       "status": "Planeado",
@@ -4346,58 +4275,6 @@
       "imagePrompt": "Pieza para Google Business Profile de Detecta Plagas. Formato cuadrado 1200 × 1200 px (decisión editorial). Escena: Maleta abierta sobre una cama tendida en una recámara luminosa; una mano revisa la costura del colchón con una lámpara pequeña; sin insectos visibles. Composición: sujeto principal en el tercio central, fondo despejado, iluminación natural suave, jerarquía clara entre escena, texto y logo. Texto exacto en la imagen: «Revisa antes de diciembre» en una sola línea o dos, tipografía sans serif gruesa, alto contraste, máximo 8 palabras. Identidad del cliente: Detecta Plagas (Puebla, México). Integrar el logo ORIGINAL de Detecta Plagas tomado de la carpeta de Drive «Detecta Plagas» o del sitio; no recrearlo, redibujarlo ni inventarlo. Si el archivo no está disponible, dejar libre un área de 220 × 90 px en la esquina superior izquierda para colocarlo después. Paleta y tipografía oficiales: NO CONFIRMADAS; tomarlas de los archivos de marca. Si no se confirman, usar fondo claro, texto gris carbón y un solo color de acento tomado del logo. Sin paleta Cubo SEO. Restricciones: estilo ilustración/foto de estudio limpia y claramente genérica; NO presentarla como fotografía de un trabajo real de Detecta Plagas ni añadir pies de foto. Sin personas reconocibles, sin plagas en primer plano grotesco, sin químicos rociándose sobre alimentos, sin precios, sellos, certificados ni garantías. Márgenes seguros de 80 px. Revisar ortografía y legibilidad en móvil antes de publicar.",
       "altText": "Maleta abierta sobre una cama mientras una mano revisa la costura del colchón.",
       "evidence": "Servicio confirmado en la ficha (landing /chinches/). GSC 12/10–09/11/2026."
-    },
-    {
-      "localIntent": "Puebla, Pue.",
-      "hashtags": "",
-      "imageText": "",
-      "notes": "",
-      "status": "Planeado",
-      "secondaryKeywords": [],
-      "url": "",
-      "id": "dp-2026-11-25-t7",
-      "date": "2026-11-25",
-      "theme": "Pendientes con aprobación: Hormigas, Pulgas y aviso de privacidad",
-      "category": "Tarea técnica",
-      "service": "SEO técnico / web · P2",
-      "targetAudience": "Equipo Cubo SEO (interno)",
-      "customerJourney": "Interno",
-      "objective": "Publicar lo que ya está hecho en cuanto el cliente lo apruebe.",
-      "strategicRationale": "Hormigas (701) y Pulgas (706) siguen en borrador (F13); aviso de privacidad sin publicar (F27). La ficha GBP ya lista hormigas y pulgas como servicios.",
-      "primaryKeyword": "",
-      "hook": "P2 · Pendientes con aprobación: Hormigas, Pulgas y aviso de privacidad",
-      "caption": "1. Pedir a Omar aprobación de Hormigas y Pulgas; QA público, enlaces desde menú y artículos.\n2. Pedir nombre legal, RFC, domicilio y finalidades para el aviso; publicarlo y enlazarlo en footer y formulario.\n3. No publicar sin aprobación.",
-      "cta": "Marcar como hecha en el log solo con evidencia de cierre",
-      "imageDirection": "No aplica: tarea interna sin pieza gráfica.",
-      "imagePrompt": "No aplica: tarea interna sin pieza gráfica.",
-      "altText": "No aplica.",
-      "evidence": "Ficha del proyecto (pendientes F13 y F27); GBP service items (Windsor)."
-    },
-    {
-      "localIntent": "Puebla, Pue.",
-      "hashtags": "",
-      "imageText": "",
-      "notes": "",
-      "status": "Planeado",
-      "secondaryKeywords": [],
-      "url": "https://docs.google.com/spreadsheets/d/1hh9YH4WGATbF1qNl7-iW3mrQl9KHxTVKgPu80fI0aSk/edit",
-      "id": "dp-2026-11-25-t8",
-      "date": "2026-11-25",
-      "theme": "Registrar curaciones y preparar la medición de diciembre",
-      "category": "Tarea técnica",
-      "service": "SEO técnico / web · P1",
-      "targetAudience": "Equipo Cubo SEO (interno)",
-      "customerJourney": "Interno",
-      "objective": "Poder demostrar en el reporte qué cambio movió clics e impresiones.",
-      "strategicRationale": "La pestaña Log no tiene filas de noviembre al 11/11. El control F28 corre el 1/12 a las 06:17 UTC.",
-      "primaryKeyword": "",
-      "hook": "P1 · Registrar curaciones y preparar la medición de diciembre",
-      "caption": "1. Registrar en el log cada curación y post con fecha real de publicación (una fila por entregable).\n2. Guardar los títulos/metas anteriores para comparar.\n3. Comparar 28 días antes vs. 28 días después por URL y consulta (no mes parcial).\n4. Revisar el resultado de F28 del 1/12 y el rendimiento F17.\n5. PROPUESTA para diciembre: evaluar una página general de precios de fumigación en Puebla solo si el negocio aprueba precios o criterios.",
-      "cta": "Marcar como hecha en el log solo con evidencia de cierre",
-      "imageDirection": "No aplica: tarea interna sin pieza gráfica.",
-      "imagePrompt": "No aplica: tarea interna sin pieza gráfica.",
-      "altText": "No aplica.",
-      "evidence": "Google Sheet «SEO», pestaña Log (11/11/2026); ficha F28."
     }
   ]
 }
